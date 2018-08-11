@@ -41,7 +41,102 @@ M：为什么我没有Run XX按钮？
 
 Z：idea在初次启动的时候需要加载许多东西，建议maven使用阿里云的仓库，加载完之后才会出现Run XX按钮。
 
-## 2.配置文件
+Z：当出现此页面的时候，说明启动成功  
+
+![](../imgs/boot05.png)   
+
+M：怎么编写一个Controller文件呢？
+
+Z：添加类似Spring的注解，启动即可访问。(也可以先编译，通过命令启动)
+
+```java
+@RestController
+public class HelloController {
+    @RequestMapping(value = "/hello",method = RequestMethod.GET)
+    public String say(){
+        return "Hello spring Boot!";
+    }
+}
+```
+
+M：怎么进行代码补全呢？
+
+Z：由于代码补全快捷键冲突了，所以需要进行调整。
+
+### 3.配置项目   
+
+Z：新建的项目中，application.properties就是新建项目默认的配置文件。这里可以对访问端口和访问路径进行配置。
+
+```properties
+server.port=8081
+server.context-path=/girl
+```
+
+相似的，application.yml也是默认配置文件，其使用分组的格式，**:之后必须加空格**  
+
+```properties
+server:
+	port: 8081
+	context-path: /girl
+```
+
+M：yml可以配置注入的值吗？
+
+Z：也行，直接写  ``键:值``，用``@Value("${键}")``的方式即可注入。  
+
+M：可以用@Value把配置文件内容注入到java中，那要怎么注入到xml中呢?
+
+Z：直接用${}就可以引用了
+
+```properties
+server:
+	port: 8081
+age: 18
+size: B
+content: "size: ${size}，age: ${age}"
+```
+
+M：一个个属性注入太麻烦了，有没有注入对象的方法？
+
+Z：修改配置文件为组的形式，编写pojo对象映射，再将pojo对象注入
+
+```properties
+server:
+	port: 8081
+girl:
+	age: 18
+	size: B
+```
+
+pojo对象
+
+```java
+
+```
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+https://www.imooc.com/video/13591
+
+---
+
+
+
+
+
+
 
 ### 1.配置文件.properties   
 
