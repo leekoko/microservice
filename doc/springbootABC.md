@@ -72,7 +72,7 @@ server.port=8081
 server.context-path=/girl
 ```
 
-相似的，application.yml也是默认配置文件，其使用分组的格式，**:之后必须加空格**  
+相似的，application.yml也是默认配置文件，其使用分组的格式，**:之后必须加空格，子内容前面为tab键**  
 
 ```properties
 server:
@@ -108,11 +108,46 @@ girl:
 	size: B
 ```
 
-pojo对象
+pojo对象，需要``@Component ``定义Spring管理Bean(_@Component注解相当于:@Service,@Controller,@Repository，并下面类纳入进spring容器中管理。这样才能被下一层@Autowired注入该对象_)，``@ConfigurationProperties``指定前缀内容  
 
 ```java
+@Component
+@ConfigurationProperties(prefix = "girl")
+public class GirlProperties {
 
+    private String size;
+
+    private Integer age;
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+    ...
+}
 ```
+
+运行``@SpringBootApplication``,即可访问Controller的内容   
+
+```java
+@RestController
+public class HelloController {
+
+    @Autowired
+    private GirlProperties girlProperties;
+
+    @RequestMapping(value = "/hello",method = RequestMethod.GET)
+    public String say(){
+        return girlProperties.getSize();
+    }
+
+}
+```
+
+
 
 
 
@@ -124,87 +159,11 @@ pojo对象
 
 
 
-
-
-
-
-https://www.imooc.com/video/13591
+https://www.imooc.com/video/13592
 
 ---
 
 
-
-
-
-
-
-### 1.配置文件.properties   
-
-```properties
-server.port=8081     
-server.context-path=/girl
-```
-
-- 设置端口   
-- 添加访问前缀   
-
-### 2.配置文件.yml   
-
-yml配置文件更加简便,推荐使用。
-
-```properties
-server:
-	port:8082
-	context:/girl   
-```
-
-#### 1.yml配置变量   
-
-1. 声明配置的变量   
-
-   ```properties
-   size:B
-   ```
-
-
-2. 注入配置的变量
-
-   ```java
-   @Value("size")
-   private String size;
-   ```
-
-#### 2.配置调用当前配置   
-
-```properties
-age:18
-content:"age:${age}"
-```
-
-#### 3.yml配置对象
-
-1. 设置配置文件
-
-   ```properties
-   girl:
-   	name:koko
-   	age:18
-   ```
-
-2. 注入java对象   
-
-   ```java
-   @Component
-   @ConfigurationProperties(prefix="girl")
-   public class GirlProperties{
-     private String name;
-     private Integer age;
-     ...setter & getter
-   }
-   ```
-
-   - 以前缀为girl的注解，将其属性注入进来。
-   - @Component注解相当于:@Service,@Controller,@Repository，并下面类纳入进spring容器中管理。这样才能被下一层@Autowired注入该对象。   
 
 #### 4.调用配置   
 
