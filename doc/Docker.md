@@ -64,7 +64,7 @@ Z：通过``docker ps``可以查看进程。
 
 Z：如果没添加-d，为前台运行的，使用Ctrl + C就能把nginx关闭。
 
-Z：指定name启动docker run -itd --name testName -d -P hub.c.163.com/library/tomcat
+Z：指定name启动``docker run -itd --name testName -d -P hub.c.163.com/library/tomcat``  
 
 ### 查看镜像  
 
