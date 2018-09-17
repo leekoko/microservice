@@ -5,6 +5,8 @@
 
 #### 2.[SpringBoot进阶](doc/springBootProgress.md)  
 
+#### 3.[微服务常用名词](doc/commonWord.md)
+
 ---
 
 ## B.微信点餐系统   
@@ -20,3 +22,4 @@
 #### 1.[Docker](doc/Docker.md)   
 
 #### 2.[Eureka](doc/Eureka.md)  
+
