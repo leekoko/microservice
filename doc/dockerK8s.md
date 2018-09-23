@@ -10,7 +10,15 @@ Z：1.拉取``docker pull python:3.6``
 
 2.运行python``docker run -it --entrypoint bash python:3.6``  
 
+3.运行dockerfile.base
 
+``docker build -t python-base:latest -f Dockerfile.base .``  
+
+4.运行dockerfile
+
+``docker build -t message-service:latest .``
+
+4-2
 
 
 
