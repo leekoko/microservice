@@ -1,6 +1,6 @@
 # Temp
 
-### 服务docker化  
+### 1.服务docker化  
 
 ##### user-thrift-service
 
@@ -81,17 +81,92 @@ M：构建完所有的镜像之后做什么呢？
 
 Z：启动mysql，redis，zookeeper基础服务，配置docker-compose.yml并启动
 
-M：怎么运行docker-compose？
+### 2.docker-compose  
 
-Z：使用命令``docker-compose up -d``,
+M：docker-compose有什么用呢？
 
-``docker-compose down``更新服务
-
-### docker-compose  
+Z：定义运行多个docker容器的工具。
 
 M：docker-compose该怎么使用呢？
 
-Z：
+Z：编写命令，执行命令
+
+```properties
+version: '3'
+
+#networks:
+#  default:
+#    external:
+#      name: imooc-network
+
+services:
+  message-service:
+    image: message-service:latest
+
+  user-service:
+    image: user-service:latest
+    command:
+    - "--mysql.address=127.0.0.1"
+
+  user-edge-service:
+    image: user-edge-service:latest
+    links:
+    - user-service
+    - message-service
+    command:
+    - "--redis.address=127.0.0.1"
+
+  course-service:
+    image: course-service:latest
+    links:
+    - user-service
+    command:
+    - "--mysql.address=127.0.0.1"
+    - "--zookeeper.address=127.0.0.1"
+
+  course-edge-service:
+    image: course-edge-service:latest
+    links:
+    - user-edge-service
+    command:
+    - "--zookeeper.address=127.0.0.1"
+
+  api-gateway-zuul:
+    image: api-gateway-zuul:latest
+    links:
+    - course-edge-service
+    - user-edge-service
+    ports:
+    - 8080:8080
+```
+
+- 批量启动服务``docker-compose up -d``  
+
+  ![](../imgs/m02.png)  
+
+- 批量更新服务``docker-compose down``
+
+### 3.测试访问   
+
+运行命令汇总：
+
+```
+docker run -it user-service:latest --mysql.address=192.168.0.2
+docker run -it user-edge-service:latset --redis.address=192.168.0.2
+docker run -it course-service:latest --mysql.address=192.168.0.2 --zookeeper.address=192.168.0.2
+docker run -it course-edge-service --zookeeper.address=192.168.0.2
+docker run -it api-gateway-zuul
+```
+
+M：为什么访问不了呢？
+
+Z：从头对比视频，并且做笔记总结，一直到知道为何访问不了为止。
+
+
+
+
+
+
 
 
 
@@ -100,32 +175,7 @@ Z：
 访问路径：
 
 1. www.mooc.com/course/courseList    
-2. www.mooc.com/course/courseList?token=token地址   
-3. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+2. 注册：www.mooc.com/course/courseList?token=token地址   
 
 
 
@@ -133,6 +183,7 @@ Z：
 
 1. 数据库分表有什么规律吗？
 2. ip的代替，名字访问和变量访问有什么区别呢？
+3. docker-compose和普通启动有什么本质上的区别吗？
 
 
 
