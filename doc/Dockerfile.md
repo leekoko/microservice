@@ -124,8 +124,3 @@ Z：使用命令``docker build   --no-cache``。也可以在dockerfile中添加�
 M：怎么查看构建过程呢？
 
 Z：使用命令``docker history AAA/df_test1``   
-
-
-
-   
-
