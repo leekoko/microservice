@@ -166,13 +166,6 @@ Z：从头对比视频，并且做笔记总结，一直到知道为何访问不�
 
 
 
-访问路径：
-
-1. www.mooc.com/course/courseList    
-2. 注册：www.mooc.com/course/courseList?token=token地址   
-
-
-
 调整依赖
 
 1. 数据库分表有什么规律吗？
