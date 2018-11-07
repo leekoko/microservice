@@ -182,3 +182,29 @@ public interface GirlRepository extends JpaRepository<Girl, Integer> {
 
 [查看源码](../SourceCode/girl)      
 
+### 5.分页查询
+
+M：怎么实现分页查询呢？
+
+Z：Demo如下
+
+```java
+    @RequestMapping(value="/listPage")
+    public String listPage(){
+        //分页查询	page，size，排序
+        Pageable pageable = new PageRequest(0,10,new Sort(Sort.Direction.ASC,"id")); 
+        Page<User> page = userRepository.findAll(pageable);
+        String result = "";
+        for (User user:page.getContent()){
+            result = user.getName()+":"+user.getDeparment().getName()+":"+user.getRoles().get(0).getName();
+        }
+        return result;
+    }
+```
+
+
+
+
+
+
+
