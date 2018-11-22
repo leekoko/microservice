@@ -125,4 +125,4 @@ Z：编写Dockerfile，然后build构建镜像
 
 M：win10下的Dockerfile怎么创建？
 
-Z：直接右键新建txt文件，去掉txt后缀即可。
+Z：直接右键新建txt文件，去掉txt后缀即可
