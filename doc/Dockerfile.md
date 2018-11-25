@@ -1,7 +1,5 @@
 # dockerfile   
 
-### 常用指令  
-
 #### 1.RUN
 
 M：RUN指令有什么用呢？
