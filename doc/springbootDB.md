@@ -82,17 +82,7 @@ public class Deparment {
 
 - @JsonBackReference：防止对象递归访问
 
-======================================
-
-- @JoinTable：？？
-- @joinColumns ：？？
-- @inverseJoinColumns：？？
-
-
-
 M：JPA修改字段属性之后，怎么更新到数据库表中？
-
-
 
 ### 3.继承接口
 
