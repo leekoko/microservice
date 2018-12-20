@@ -6,8 +6,6 @@
 
 
 
----
-
 
 ## B.SpringBoot入门    
 
@@ -35,7 +33,7 @@
 
 ## B.微信点餐系统   
 
-#### 1.[部署微服务项目](doc/deploy.md)
+#### 1.[部署微服务项目](doc/order/deploy.md)
 
 
 
