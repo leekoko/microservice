@@ -39,9 +39,13 @@
 
 ---
 
-## C.其他功能
+## C.知识点
 
 #### 1.[Docker](doc/Docker.md)   
 
 #### 2.[Eureka](doc/Eureka.md)  
+
+#### 3.[Feign](doc/feign.md)  
+
+
 
