@@ -18,7 +18,7 @@ Z：提供者像往常Controller的写法一样
     }
 ```
 
-而消费者的接口需要注意，与提供者的返回类型相同（支持返回复杂类型）
+而消费者的接口需要注意，与提供者的返回类型相同（支持返回复杂类型）。如果带参数，务必在提供方和消费方都添加``@RequestParam("info")``注明参数对象。
 
 ```java
 @FeignClient(name = "eda-unify-base-service", fallback = CorpusServiceFallbackImpl.class)
