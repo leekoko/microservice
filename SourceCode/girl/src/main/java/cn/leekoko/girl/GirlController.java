@@ -17,6 +17,7 @@ public class GirlController {
 
     /**
      * 查询所有
+     *
      * @return
      */
     @GetMapping(value = "/girls")
@@ -26,6 +27,7 @@ public class GirlController {
 
     /**
      * 根据id查询
+     *
      * @param id
      * @return
      */
@@ -38,6 +40,7 @@ public class GirlController {
 
     /**
      * 添加内容
+     *
      * @param age
      */
     @PostMapping(value = "/girlAdd")
@@ -52,7 +55,7 @@ public class GirlController {
      * 更新
      */
     @PutMapping(value = "/moGirlById/{id}")
-    public Girl girlUpdate(@PathVariable("id") Integer id, @RequestParam("age") Integer age,@RequestParam("size") String size) {
+    public Girl girlUpdate(@PathVariable("id") Integer id, @RequestParam("age") Integer age, @RequestParam("size") String size) {
         Girl girl = new Girl();
         girl.setId(id);
         girl.setAge(age);

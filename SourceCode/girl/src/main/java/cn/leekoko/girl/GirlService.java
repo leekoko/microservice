@@ -12,7 +12,7 @@ public class GirlService {
     private GirlRepository girlRepository;
 
     @Transactional
-    public void insertTwo(){
+    public void insertTwo() {
         Girl girlA = new Girl();
         girlA.setSize("A");
         girlA.setAge(10);
@@ -23,7 +23,6 @@ public class GirlService {
         girlB.setAge(20);
         girlRepository.save(girlB);
     }
-
 
 
 }
