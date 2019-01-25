@@ -126,3 +126,9 @@ Z：编写Dockerfile，然后build构建镜像
 M：win10下的Dockerfile怎么创建？
 
 Z：直接右键新建txt文件，去掉txt后缀即可
+
+## 常用命令  
+
+M：docker的run没有留下进程？
+
+Z：可能是命令没有卡住，构建dockerfile，添加``CMD tail -f /dev/null ``,即可以将容器启动卡住。
