@@ -168,27 +168,3 @@ Z：步骤如下：
 M：怎么在Client添加Controller类？
 
 Z：Controller类所处的位置与Application同级
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-视频3-4
-
-http://www.ityouknow.com/springcloud/2017/05/12/eureka-provider-constomer.html
