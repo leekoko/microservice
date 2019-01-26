@@ -8,4 +8,4 @@ eureka:
 
 spring:
  application:
-  name: client-0
+  name: client1
