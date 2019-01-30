@@ -7,7 +7,7 @@
 
 #### 1.[SpringBoot入门](doc/springbootBasic.md)    
 
-#### 2.[SpringBoot数据库](doc/springbootDB.md)  
+#### 2.[Spring data jpa](doc/springbootDB.md)  
 
 #### 3.[Eureka](doc/Eureka.md)  
 

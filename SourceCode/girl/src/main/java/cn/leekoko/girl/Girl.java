@@ -16,6 +16,8 @@ public class Girl {
 
     private Integer age;
 
+    private String newColName;
+
     public Integer getId() {
         return id;
     }
@@ -38,5 +40,13 @@ public class Girl {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getNewColName(){
+        return newColName;
+    }
+
+    public void setNewColName(String newColName){
+        this.newColName = newColName;
     }
 }
