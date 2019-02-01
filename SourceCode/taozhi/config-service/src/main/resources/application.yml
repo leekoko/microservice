@@ -10,4 +10,8 @@ spring:
           uri: https://github.com/leekoko/microservice/     # 配置git仓库的地址
           search-paths: config-repo                             # git仓库地址下的相对地址，可以配置多个，用,分割。
           username: leekoko                                      # git仓库的账号
-          password:                                              # git仓库的密码
+          password:                                               # git仓库的密码
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/   # 注册中心eurka地址
