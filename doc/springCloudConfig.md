@@ -72,3 +72,38 @@ Z：操作步骤如下
 
 ## 配置中心服务化   
 
+Z：上面的配置读取方式，要指定配置的服务端。但是服务端的地址随时会变，所以是将服务端和客户端注册到Eureka中管理
+
+修改方式如下：
+
+1. config服务端添加配置，注册服务到Eureka
+
+   ```yaml
+   eureka:
+     client:
+       serviceUrl:
+         defaultZone: http://localhost:8761/eureka/   # 注册中心eurka地址
+   ```
+
+2. 客户端连接Eureka，获取config服务，通过config服务再去获取git上的配置信息
+
+   ```yaml
+   spring:
+     cloud:
+       config:
+         name: neo-config
+         profile: dev
+   #      uri: http://localhost:8001/
+         label: master
+         discovery:
+           service-id: spring-cloud-config-server
+           enabled: true
+   eureka:
+     client:
+       service-url:
+         defaultZone: http://localhost:8761/eureka/   # 注册中心eurka地址
+   
+   ```
+
+   service-id指定服务端name值：spring-cloud-config-server，启动服务发现：enabled: true
+
