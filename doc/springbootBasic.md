@@ -253,6 +253,3 @@ Z：在方法上面添加``@Transactional``注解，即说明其为同个事务�
 M：为什么我添加之后，还是有一个成功，一个失败呢？
 
 Z：只有在innodb引擎下事务才能工作。所以需要在数据库中执行``ALTER TABLE girl ENGINE=innodb``命令。
-
-
-
