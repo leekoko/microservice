@@ -4,26 +4,6 @@
 
 Thirft安装和验证
 
-3-1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### 1.服务docker化  
 
 ##### user-thrift-service
