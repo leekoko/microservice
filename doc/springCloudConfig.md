@@ -107,3 +107,13 @@ Z：上面的配置读取方式，要指定配置的服务端。但是服务端�
 
    service-id指定服务端name值：spring-cloud-config-server，启动服务发现：enabled: true
 
+## refresh   
+
+Z：如果配置修改，
+
+
+
+http://www.ityouknow.com/springcloud/2017/05/23/springcloud-config-svn-refresh.html
+
+
+
