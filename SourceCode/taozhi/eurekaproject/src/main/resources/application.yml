@@ -4,7 +4,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:${server.port}/eureka/ #eureka server的应用注册地址
+      defaultZone: http://127.0.0.1:${server.port}/eureka/ #eureke registered address
     register-with-eureka: false
     fetch-registry: false
 

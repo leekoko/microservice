@@ -109,11 +109,17 @@ Z：上面的配置读取方式，要指定配置的服务端。但是服务端�
 
 ## refresh   
 
-Z：如果配置修改，
+Z：客户端从服务端获取配置文件，如果配置文件内容修改，客户端是不会感知到变化，需要使用POST方法触发``/refresh``。具体操作暂时仍未实现
 
+进阶的还有：
 
+用webhook检测更新
 
 http://www.ityouknow.com/springcloud/2017/05/23/springcloud-config-svn-refresh.html
+
+利用Spring cloud bus解决多客户端更新
+
+http://www.ityouknow.com/springcloud/2017/05/26/springcloud-config-eureka-bus.html
 
 
 
