@@ -1,34 +1,68 @@
 # SpringBoot入门    
 
-D：SpringBoot为SpringMVC升级版。简化配置，很可能成为下一代的框架。   
-
-M：SpringBoot有什么主要的优势？
-
-Z：独立运行，直接java -jar XXX.jar 就可以了，因为里面内嵌了web服务器。而且SpringBoot简化了配置。
-
-## 1.新建SpringBoot项目
+## 新建SpringBoot项目
 
 Z：使用IntelliJ IDEA  ， 其破解地址为：``http://idea.lanyus.com/``    或者  ``https://jetlicense.nss.im/``   
 
 M：怎么创建springBoot项目呢？
 
-Z： 创建步骤复杂一点点
+Z： 如下（也可以通过``https://start.spring.io/``页面进行创建）
 
 1. New Project -- Spring Initializr -- 选择web
 
    ![](../imgs/boot01.png)  
 
-	确定文件路径	![](../imgs/boot02.png)	  
+   确定文件路径	![](../imgs/boot02.png)	  
 
-3. 选择版本，组件
+2. 选择版本，组件
 
    ![](../imgs/boot03.png)  
 
-4. 选择路径进行保存。删除没用的文件
+3. 选择路径进行保存。删除没用的文件
 
    ![](../imgs/boot04.png)  
 
-## 2.启动SpringBoot项目
+M：如果我需要pom文件依赖其他的父pom，而不是依赖``spring-boot-starter-parent``，该怎么做呢？
+
+Z：添加以下内容，同样可以实现依赖继承：
+
+```xml
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>2.1.1.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<!--修改打包方式 -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.1.1.RELEASE</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+```
+
+
+
+
+
+## 启动SpringBoot项目
 
 Z：运行自动生成的XXApplication类，其必须带有``@SpringBootApplication``注解，右键Run XX即可启动项目。   
 
@@ -65,7 +99,7 @@ public class HelloController {
 
 ![](../imgs/boot08.png)  
 
-## 3.添加配置文件
+## 添加配置文件
 
 Z：新建的项目中，application.properties就是新建项目默认的配置文件。这里可以对访问端口和访问路径进行配置。
 
@@ -118,7 +152,7 @@ Z：将其写成两个配置文件，而主配置文件只要选好要哪一个�
 
    调用dev后缀的配置文件。
 
-## 4.遇到的问题
+## 遇到的问题
 
 M：为什么程序启动失败？
 
@@ -138,7 +172,7 @@ M：为什么扫描引用不到？
 
 
 
-## 4.注解
+## 注解
 
 ### 1.@Component  & @ConfigurationProperties  
 
