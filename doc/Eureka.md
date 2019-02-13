@@ -118,7 +118,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://peer1:8000/eureka/,http://peer3:8002/eureka/
-      ---
+---
 spring:
   application:
     name: spring-cloud-eureka
@@ -141,7 +141,7 @@ java -jar spring-cloud-eureka-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer2
 java -jar spring-cloud-eureka-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer3
 ```
 
-## 创建Client项目   
+## 创建提供者
 
 Z：步骤如下：
 
@@ -165,6 +165,17 @@ Z：步骤如下：
 
    查看Eureka即可发现注册在上面的项目
 
+M：为什么有的人使用``@EnableEurekaClient``来注册服务？
+
+Z：如果classpath添加了eureka，则它们的作用是一样的
+
+- @EnableDiscoveryClient注解是基于spring-cloud-commons依赖，并且在classpath中实现
+- @EnableEurekaClient注解是基于spring-cloud-netflix依赖，只能为eureka作用
+
 M：怎么在Client添加Controller类？
 
 Z：Controller类所处的位置与Application同级
+
+M：消费者怎么调用注册在Eureka上的服务呢？
+
+Z：同样是添加``@EnableDiscoveryClient``注解，通过Feign进行调用。（详情可见[Feign](https://github.com/leekoko/microservice/blob/master/doc/feign.md)） 

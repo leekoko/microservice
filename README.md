@@ -1,19 +1,25 @@
 # 微服务
 
-### 1.[Thrift](doc/thrift.md)  
 
-
-## B.SpringBoot入门    
+## A.SpringBoot & SpringCloud   
 
 #### 1.[SpringBoot入门](doc/springbootBasic.md)    
 
-#### 2.[Spring data jpa](doc/springbootDB.md)  
+#### 2.[jpa](doc/springbootDB.md)  
 
 #### 3.[Eureka](doc/Eureka.md)  
 
 #### 4.[Feign](doc/feign.md)    
 
 #### 5.[网关](doc/zuul.md)  
+
+#### 6.[zipkin链路跟踪](doc/zipkin.md)  
+
+
+
+
+
+
 
 
 
@@ -25,7 +31,9 @@
 
 #### .[Kubernetes](doc/Kubernetes.md)  
 
-#### 
+1.[Thrift](doc/thrift.md)  
+
+
 
 
 

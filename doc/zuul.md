@@ -162,3 +162,102 @@ public TokenFilter tokenFilter() {
 
 实现请求拦截，请求url方式为：``http://localhost:8888/spring-cloud-producer/hello?name=neo&token=xx``  
 
+## 路由熔断
+
+Z：路由器可以实现熔断，拦截返回特定内容。实现方式如下：
+
+1. 新增ProducerFallback类（该类添加@Component注解），实现FallbackProvider接口
+
+2. 实现getRoute方法，指定熔断的服务
+
+   ```java
+   public String getRoute() {
+       return "spring-cloud-producer";
+   }
+   ```
+
+3. 实现fallbackResponse方法，定义返回的内容
+
+   ```java
+   @Override
+   public ClientHttpResponse fallbackResponse() {
+       return new ClientHttpResponse() {
+           @Override
+           public HttpStatus getStatusCode() throws IOException {
+               return HttpStatus.OK;
+           }
+   
+           @Override
+           public int getRawStatusCode() throws IOException {
+               return 200;
+           }
+   
+           @Override
+           public String getStatusText() throws IOException {
+               return "OK";
+           }
+   
+           @Override
+           public void close() {
+   
+           }
+   
+           @Override
+           public InputStream getBody() throws IOException {
+               return new ByteArrayInputStream("The service is unavailable.".getBytes());
+           }
+   
+           @Override
+           public HttpHeaders getHeaders() {
+               HttpHeaders headers = new HttpHeaders();
+               headers.setContentType(MediaType.APPLICATION_JSON);
+               return headers;
+           }
+       };
+   }
+   ```
+
+   fallbackResponse方法还有重载方法，附加了异常信息的返回
+
+   ```java
+       @Override
+       public ClientHttpResponse fallbackResponse(Throwable cause) {
+           if (cause != null && cause.getCause() != null) {
+               String reason = cause.getCause().getMessage();
+               logger.info("Excption {}",reason);
+           }
+           return fallbackResponse();
+       }
+   ```
+
+   当服务发生异常时，就会触发``fallbackResponse(Throwable cause)``,打印异常信息并返回``The service is unavailable.``到页面。
+
+## 路由重试
+
+M：如果因为网络或其他原因，导致服务不可用，希望路由对服务重试，怎么实现呢？
+
+Z：步骤如下：
+
+1. 添加spring-retry
+
+   ```xml
+   <dependency>
+   	<groupId>org.springframework.retry</groupId>
+   	<artifactId>spring-retry</artifactId>
+   </dependency>
+   ```
+
+2. 配置文件开启Zuul Retry
+
+   ```properties
+   #是否开启重试功能
+   zuul.retryable=true
+   #对当前服务的重试次数
+   ribbon.MaxAutoRetries=2
+   #切换相同Server的次数
+   ribbon.MaxAutoRetriesNextServer=0
+   ```
+
+   在服务调用失败，会再尝试请求两次
+
+Z：但是这种方式存在缺陷，开启了重试，熔断器只有在所有实例都无法运作的情况下才能起作用。如果当前实例存在问题，压力就会转移到其他实例上，最终导致所有的实例都被压垮。  
