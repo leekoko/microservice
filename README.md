@@ -1,19 +1,29 @@
-# 微服务
 
-
-## A.SpringBoot & SpringCloud   
+## SpringBoot & SpringCloud   
 
 #### 1.[SpringBoot入门](doc/springbootBasic.md)    
 
 #### 2.[jpa](doc/springbootDB.md)  
 
-#### 3.[Eureka](doc/Eureka.md)  
+#### 3.[注册中心Eureka](doc/Eureka.md)  
 
 #### 4.[Feign](doc/feign.md)    
 
-#### 5.[网关](doc/zuul.md)  
+#### 5.[zuul网关](doc/zuul.md)  
 
 #### 6.[zipkin链路跟踪](doc/zipkin.md)  
+
+#### 7.[注册中心Consul](doc/consul.md)  
+
+#### 8.[Spring Cloud Gateway](doc/springCloudGateway.md)  
+
+#### 9.[actuator](doc/actuator.md)  
+
+
+
+
+
+
 
 
 
