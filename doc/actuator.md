@@ -61,4 +61,4 @@ jdbcTemplate: {
 
 更多端点使用可查看：http://blog.didispace.com/spring-boot-actuator-1/
 
-
+《Spring Boot实战》109页
