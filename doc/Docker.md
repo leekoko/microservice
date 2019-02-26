@@ -132,3 +132,26 @@ Z：直接右键新建txt文件，去掉txt后缀即可
 M：docker的run没有留下进程？
 
 Z：可能是命令没有卡住，构建dockerfile，添加``CMD tail -f /dev/null ``,即可以将容器启动卡住。
+
+## 上传镜像
+
+Z：
+
+1. 添加dockerfile
+
+   ```
+   FROM 192.168.0.115:5000/runimage-java:jre-8
+   COPY . home
+   WORKDIR home
+   CMD java -jar -Dloader.path=. eda-service-center-1.0.0-SNAPSHOT.jar
+   ```
+
+2. tag修改镜像名
+
+   ```
+   docker tag eda-service-center 10.197.70.13:5000/microservice/eda-service-center
+   ```
+
+M：为什么推送不到远程仓库上？
+
+Z：需要在docker的setting中天机Daemon地址
