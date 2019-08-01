@@ -1,6 +1,18 @@
 
 ## SpringBoot & SpringCloud   
 
+### [SpringBoot整合Mybatis](docs/SpringBoot-Mybatis.md)
+
+SpringBoot的知识点一直都很零碎，这里整理一下与Mybatis的整合。
+
+### [docker](docs/Docker.md)   
+
+用docker可以免去在机子上装太多软件的麻烦，还可以随意做测试。这里记录一下[Docker安装Kafka](docs/docker-kafka.md)案例步骤。
+
+
+
+
+
 #### 1.[SpringBoot入门](doc/springbootBasic.md)    
 
 #### 2.[jpa](doc/springbootDB.md)  
@@ -43,10 +55,6 @@
 
 1.[Thrift](doc/thrift.md)  
 
-
-
-
-
 ---
 
 ## B.微信点餐系统   
@@ -55,11 +63,7 @@
 
 
 
----
-
-## C.知识点
-
-#### 1.[Docker](doc/Docker.md)   
+#### 
 
 #### 
 
